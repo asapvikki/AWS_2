@@ -1,0 +1,22 @@
+1. make two ec2 instances in same security group.
+
+2. security group of instance A : SSH PORT 22 from My IP
+    
+   security group of instance B : SSH PORT 22 from sg-id of security group of instance A
+
+3. go to the instanceA
+   1.ssh-add -k <private-key.pem>
+   2.ssh -A ec2-user@<public-ip-of-instanceA>
+
+4. now connected to instanceA 
+   instanceA: ssh-keygen
+   instanceA: cat ~/.ssh/id_rsa.pub | ssh ec2-user@<private-ip-of-instanceB>
+
+   passwordless ssh is now setup between instanceA and instanceB
+
+5. we can test the connection 
+     ssh 172.31.85.98	
+	
+  
+   
+   
